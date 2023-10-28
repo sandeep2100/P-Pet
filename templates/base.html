@@ -29,6 +29,40 @@
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
 </head>
 
+<!--------------------------------------------------- Index Page Pop Up Image --------------------------------------->
+<!--<style>
+    /* CSS for the modal popup */
+        .modal {
+           display: none;
+           position: fixed;
+           z-index: 1;
+           left: 450px;
+           top: 70px;
+           width: 550px;
+           height: 100%;
+           overflow: hidden;
+           background-color: transparent;
+        }
+        .modal-content {
+           width: auto;
+           height: auto;
+           max-width: 100%;
+           max-height: 100%;
+           position: relative;
+           margin: 0 auto;
+        }
+        .close {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            font-size: 28px;
+            color: black;
+            cursor: pointer;
+        }
+</style>-->
+<!--------------------------------------------------- Index Page Pop Up Image End --------------------------------------->
+
+
 {% include 'header.html' %}
 {% block content %}
 
@@ -38,6 +72,33 @@
 
 {% block script %}{% endblock %}
 
+
+<!--<script>
+// JavaScript to show the modal popup and handle the close button click event
+var modal = document.getElementById("myModal");
+var modalContent = document.querySelector(".modal-content");
+var closeButton = document.querySelector(".close");
+
+// Show the modal when the page loads
+window.onload = function() {
+    modal.style.display = "block";
+    // Set modal content size to fit the image
+    modalContent.style.width = modalContent.children[0].width + "px";
+    modalContent.style.height = modalContent.children[0].height + "px";
+};
+
+// Close the modal when the close button is clicked
+closeButton.onclick = function() {
+    modal.style.display = "none";
+};
+
+// Close the modal if the user clicks outside the modal content
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+    </script>-->
 
 
  <!-- Back to Top -->

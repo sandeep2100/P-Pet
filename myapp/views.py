@@ -1,7 +1,28 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import *
+from datetime import datetime, timedelta
 
 
 def index(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        number = request.POST.get("number")
+        pet = request.POST.get("pet")
+        date = request.POST.get("date")
+        time = request.POST.get("time")
+        selected_service = request.POST.get("selected_service")
+
+        en = Appointment(
+            name=name,
+            email=email,
+            number=number,
+            pet=pet,
+            date=date,
+            time=time,
+            selected_service=selected_service
+        )
+        en.save()
     return render(request, "index.html")
 
 

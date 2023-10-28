@@ -1,37 +1,40 @@
 {% load static %}
 <!-- Topbar Start -->
     <div class="container-fluid">
-        <div class="row py-3 px-lg-5">
-            <div class="col-lg-4">
-                <a href="" class="navbar-brand d-none d-lg-block">
-                    <h1 class="m-0 display-5 text-capitalize"><span class="text-primary">P-Pet</span> Arrival</h1>
-                </a>
-            </div>
-            <div class="col-lg-8 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <div class="d-inline-flex flex-column text-center pr-3 border-right">
-                        <h6>Opening Hours</h6>
-                        <p class="m-0">8.00AM - 9.00PM</p>
+        <div class="row px-lg-5">
+
+            <!--<div class="col-lg-8 d-flex justify-content-end text-lg-right">
+                <div class="d-inline-flex col-lg-12">
+                    <div class="col-sm-6 d-inline-flex flex-column text-center border-right">
+                        <h6>Mon - Sat</h6>
+                        <p class="m-0">6.00AM - 8.00PM</p>
                     </div>
-                    <div class="d-inline-flex flex-column text-center px-3 border-right">
-                        <h6>Email Us</h6>
-                        <p class="m-0">info@example.com</p>
+
+                    <div class="col-sm-12">
+                    <div class="d-inline-flex flex-column  px-3 border-right">
+                        <p class="m-0">p.petarrivals@gmail.com</p>
                     </div>
-                    <div class="d-inline-flex flex-column text-center pl-3">
-                        <h6>Call Us</h6>
-                        <p class="m-0">+012 345 6789</p>
+                    <div class="d-inline-flex flex-column  pl-3">
+                        <p class="m-0">+1 (431)557-1000</p>
                     </div>
+                        </div>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
     <!-- Topbar End -->
     <!-- Navbar Start -->
-    <div class="container-fluid p-0">
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
-            <a href="" class="navbar-brand d-block d-lg-none">
-                <h1 class="m-0 display-5 text-capitalize font-italic text-white"><span class="text-primary">Safety</span>First</h1>
+    <div class="container-fluid p-0 d-flex justify-content-center bg-dark">
+        <div class="col-lg-4">
+                <a href="{% url 'index' %}" class="navbar-brand d-none d-lg-block">
+                    <h1 class="m-3 display-5 text-capitalize"><span class="text-primary">P-Pet</span> <span class="text-white">Arrival</span></h1>
+                </a>
+            <a href="{% url 'index' %}" class="navbar-brand d-block d-lg-none">
+                <h1 class="m-3 display-5 text-capitalize text-white"><span class="text-primary">P-Pet</span> Arrival</h1>
             </a>
+            </div>
+        <nav class="navbar navbar-expand-lg navbar-dark py-3 py-lg-0 px-lg-5 ">
+
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -42,16 +45,18 @@
                     <a href="{% url 'service' %}" class="nav-item nav-link">Service</a>
                     <a href="{% url 'price' %}" class="nav-item nav-link">Price</a>
                     <a href="{% url 'booking' %}" class="nav-item nav-link">Booking</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="#" class="dropdown-item">Blog Grid</a>
-                            <a href="#" class="dropdown-item">Blog Detail</a>
-                        </div>
-                    </div>
                     <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+                    {% if request.user.is_authenticated %}
+                    <a href="{% url 'logout' %}" class="nav-link nav-item">Logout</a>
+                    {% else %}
+                    <a href="{% url 'login' %}" class="nav-link nav-item">Login</a>
+                    {% endif %}
+
+
                 </div>
-                <a href="" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Get Quote</a>
+                 <!--<div class="d-flex justify-content-end">
+                <a href="" class="btn btn-lg btn-primary px-3 d-none d-lg-block ">Get Quote</a>
+                     </div>-->
             </div>
         </nav>
     </div>

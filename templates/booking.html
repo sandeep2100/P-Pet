@@ -7,36 +7,44 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5">
-                    <div class="bg-primary py-5 px-4 px-sm-12">
-                        <form class="py-5">
+                    <div class="bg-primary p-0 px-4 px-sm-12">
+                        <form class="py-5" action="{% url 'booking' %}" method="post">
+                            {% csrf_token %}
                             <div class="form-group">
-                                <input type="text" class="form-control border-0 p-4" placeholder="Your Name" required="required" />
+                                <input name="name" type="text" class="form-control border-0 p-4" placeholder="Your Name" required="required" />
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control border-0 p-4" placeholder="Your Email" required="required" />
+                                <input name="email" type="email" class="form-control border-0 p-4" placeholder="Your Email" required="required" />
                             </div>
                             <div class="form-group">
-                                <input type="number" class="form-control border-0 p-4" placeholder="Your Mobile Number" required="required" />
+                                <input name="number" type="number" class="form-control border-0 p-4" placeholder="Your Mobile Number" required="required" />
                             </div>
                            <div class="form-group">
-                                <select class="custom-select border-0 px-4" style="height: 47px;">
+                                <select name="pet" class="custom-select border-0 px-4" style="height: 47px;">
                                     <option selected>Select Pet</option>
-                                    <option>Dog</option>
-                                    <option>Cat</option>
+                                    <option value="Dog">Dog</option>
+                                    <option value="Cat">Cat</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <div class="date" id="date" data-target-input="nearest">
-                                    <input type="text" class="form-control border-0 p-4 datetimepicker-input" placeholder="Reservation Date" data-target="#date" data-toggle="datetimepicker"/>
+                                    <input name="date" type="text" class="form-control border-0 p-4 datetimepicker-input" placeholder="Reservation Date" data-target="#date" data-toggle="datetimepicker"/>
                                 </div>
                             </div>
+
                             <div class="form-group">
                                 <div class="time" id="time" data-target-input="nearest">
-                                    <input type="text" class="form-control border-0 p-4 datetimepicker-input" placeholder="Reservation Time" data-target="#time" data-toggle="datetimepicker"/>
+                                    <select name="time" required>
+        {% for time_slot in time_slots %}
+            <option value="{{ time_slot }}" {% if time_slot in booked_times %} disabled {% endif %}>
+                {{ time_slot }}
+            </option>
+        {% endfor %}
+    </select>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <select class="custom-select border-0 px-4" style="height: 47px;">
+                                <select name="selected_service" class="custom-select border-0 px-4" style="height: 47px;">
                                     <option selected>Select A Service</option>
                                     <option value="1">Service 1</option>
                                     <option value="2">Service 1</option>
@@ -96,5 +104,6 @@
         </div>
     </div>
     <!-- Booking Start -->
+
 
 {% endblock %}
